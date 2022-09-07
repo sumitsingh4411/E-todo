@@ -4,12 +4,14 @@ import "./ToDoList.scss";
 import deleteIcon from "./../../../assets/delete.png";
 //@ts-ignore
 import editIcon from "../../../assets/edit.webp";
+import EditToDoModal from "../modal/EditToDoModdal";
 
 interface IProps {
   title: string;
   simple_todo: boolean;
 }
 export default function ToDoList({ title, simple_todo }: IProps) {
+  const [editTodoModal, setEditTodoModal] = React.useState<boolean>(false);
   return (
     <div className="todo_item">
       <div className="todo_item_left">
@@ -23,6 +25,7 @@ export default function ToDoList({ title, simple_todo }: IProps) {
           <img src={deleteIcon} alt="delete" className="delete_icon" />
         </div>
       </div>
+      <EditToDoModal isOpen={editTodoModal} setIsOpen={setEditTodoModal} />
     </div>
   );
 }

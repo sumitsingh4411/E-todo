@@ -1,0 +1,41 @@
+.dashboard {
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  .top_section_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    .top_header {
+      font-size: 24px;
+      font-weight: 700;
+      color: black;
+    }
+    .create_todo {
+      padding: 5px 25px;
+      border-radius: 5px;
+      background-color: #b40e6c;
+      border: 1px solid #e0e0e0;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+  .bottom_section_content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .todo_item_specific_order {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      .todo_item_specific_order_select {
+        padding: 5px 5px;
+        border-radius: 5px;
+      }
+    }
+  }
+}

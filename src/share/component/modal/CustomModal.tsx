@@ -4,7 +4,6 @@ import ReactModal from "react-modal";
 interface Iprops {
   isOpen: boolean;
   children: React.ReactNode;
-  onRequestClose: () => void;
   setIsOpen: Function;
 }
 export default function CustomModal({ isOpen, setIsOpen, children }: Iprops) {
