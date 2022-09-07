@@ -2,8 +2,11 @@ import React from "react";
 import "./auth.scss";
 import * as yup from "yup";
 import { useFormik } from "formik";
+import { URLPath } from "../../share/constant";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -52,7 +55,7 @@ export default function Signup() {
           />
           {formik.errors.confirmPassword && formik.touched.confirmPassword ? (
             <div className="error">{formik.errors.confirmPassword}</div>
-          ) : null} 
+          ) : null}
           <input
             id="confirmPassword"
             name="confirmPassword"
@@ -69,7 +72,14 @@ export default function Signup() {
         <p className="auth_page_text">
           {" "}
           Already have an account?{" "}
-          <span className="link_change">Login now.</span>{" "}
+          <span
+            className="link_change"
+            onClick={() => {
+              navigate(URLPath.login);
+            }}
+          >
+            Login now.
+          </span>{" "}
         </p>
       </div>
     </div>

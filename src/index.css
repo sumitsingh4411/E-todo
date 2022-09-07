@@ -32,6 +32,7 @@ body {
   color: var(--regular-text-color);
   font-size: 1.6rem;
   line-height: 2.4rem;
+  background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
 }
 @tailwind base;
 @tailwind components;

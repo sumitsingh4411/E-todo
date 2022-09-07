@@ -1,6 +1,7 @@
 import React from "react";
 import "./Header.scss";
 import { useNavigate } from "react-router-dom";
+import { URLPath } from "../constant";
 
 export default function Header() {
   const history = useNavigate();
@@ -15,8 +16,21 @@ export default function Header() {
         </h2>
       </div>
       <div className="custom_header_right">
-        <button>Sign in</button>
-        <button className="header_sign_up">Sign up</button>
+        <button
+          onClick={() => {
+            history(URLPath.login);
+          }}
+        >
+          Sign in
+        </button>
+        <button
+          className="header_sign_up"
+          onClick={() => {
+            history(URLPath.register);
+          }}
+        >
+          Sign up
+        </button>
       </div>
     </div>
   );
