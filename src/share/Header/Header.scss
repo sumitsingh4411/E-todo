@@ -1,0 +1,31 @@
+.custom_header {
+  display: flex;
+  width: 100%;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80px;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  .custom_header_title {
+    font-size: 32px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .custom_header_right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 16px;
+    .header_sign_up {
+      padding: 5px 10px;
+      background: white;
+      border-radius: 14px;
+      color: blue;
+    }
+  }
+}
