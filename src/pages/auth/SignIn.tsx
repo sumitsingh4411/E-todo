@@ -1,12 +1,17 @@
-import React from "react";
 import "./auth.scss";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { URLPath } from "../../share/constant";
+import { logInWithEmailAndPassword } from "../../share/firebaseConfig";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../share/redux/slice/authSlice";
 
 export default function Signin() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [localLoading, setLocalLoading] = useState(false);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -16,8 +21,18 @@ export default function Signin() {
       email: yup.string().email().required("Email is required"),
       password: yup.string().min(6).required("Password is required"),
     }),
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      setLocalLoading(true);
+      const res: any = await logInWithEmailAndPassword(
+        values.email,
+        values.password
+      );
+      if (res) {
+        dispatch(authActions.setLogin(true));
+        localStorage.setItem("authToken", res?.accessToken);
+        navigate(URLPath.DASHBOARD);
+      }
+      setLocalLoading(false);
     },
   });
 
@@ -49,7 +64,7 @@ export default function Signin() {
             onChange={formik.handleChange}
           />
           <button type="submit" className="register_btn">
-            Login
+            {localLoading ? "Logining..." : " Login"}
           </button>
         </form>
         <p className="auth_page_text">

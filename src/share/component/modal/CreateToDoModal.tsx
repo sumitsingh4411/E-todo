@@ -16,7 +16,7 @@ export default function CreateToDoModal({ isOpen, setIsOpen }: any) {
           placeholder="Remind at"
           className="create_todo_modal_input"
         />
-        <button>Create</button>
+        <button className="todo_btn">Create</button>
       </div>
     </CustomModal>
   );

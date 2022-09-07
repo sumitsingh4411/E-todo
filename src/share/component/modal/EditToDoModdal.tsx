@@ -17,7 +17,7 @@ export default function EditToDoModal({ isOpen, setIsOpen }: any) {
           className="create_todo_modal_input"
         />
         <input type="checkbox" className="check_box" />
-        <button>Update</button>
+        <button className="todo_btn">Update</button>
       </div>
     </CustomModal>
   );

@@ -21,7 +21,14 @@ export default function ToDoList({ title, simple_todo }: IProps) {
         <div className="todo_item_right_right">
           <p>Completed</p>
           <input type="checkbox" className="check_box" />
-          <img src={editIcon} alt="edit" className="edit_icon" />
+          <img
+            src={editIcon}
+            alt="edit"
+            className="edit_icon"
+            onClick={() => {
+              setEditTodoModal(true);
+            }}
+          />
           <img src={deleteIcon} alt="delete" className="delete_icon" />
         </div>
       </div>

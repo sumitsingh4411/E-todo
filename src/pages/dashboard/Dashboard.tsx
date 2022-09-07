@@ -1,11 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import CreateToDoModal from "../../share/component/modal/CreateToDoModal";
 import ToDoList from "../../share/component/toDoList/ToDoList";
+import { selectAuth } from "../../share/redux/slice/authSlice";
 import "./Dashboard.scss";
 
 export default function Dashboard() {
+  const auth = useSelector(selectAuth);
+  const navigate = useNavigate();
   const [crateTodoListModal, setCrateTodoListModal] = useState<boolean>(false);
-  const createNewTodo = () => {};
+
+  useEffect(() => {
+    if (!auth?.isAuthenticated) {
+      navigate("/");
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [auth]);
+  
+  const createNewTodo = () => {
+    setCrateTodoListModal(true);
+  };
   return (
     <div className="dashboard">
       <div className="top_section_content">
