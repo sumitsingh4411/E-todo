@@ -11,13 +11,13 @@ import "./Dashboard.scss";
 
 export default function Dashboard() {
   const dispatch = useDispatch<any>();
-  const auth = useSelector(selectAuth);
-  const [shortBy, setShortBy] = useState<string>("");
   const { todoList, todoListStatus } = useSelector(selecttodo);
   const navigate = useNavigate();
+  const auth = useSelector(selectAuth);
+  const [shortBy, setShortBy] = useState<string>("");
   const [crateTodoListModal, setCrateTodoListModal] = useState<boolean>(false);
   const [localTodoList, setLocalTodoList] = useState<any>(todoList || []);
-  
+
   useEffect(() => {
     if (!auth?.isAuthenticated) {
       navigate("/");
@@ -75,7 +75,7 @@ export default function Dashboard() {
           </select>
         </div>
         {todoListStatus === "loading" ? (
-          <div className="loading">
+          <div className="loading" data-testid="dashboard-loader">
             <CustomLoader />
           </div>
         ) : (
