@@ -17,9 +17,38 @@ export default function AllRoutes() {
           auth?.isAuthenticated ? <Navigate to={URLPath.DASHBOARD} /> : <Home />
         }
       />
-      <Route path={URLPath.login} element={<SignIn />} />
-      <Route path={URLPath.register} element={<Signup />} />
-      <Route path={URLPath.DASHBOARD} element={<Dashboard />} />
+      <Route
+        path={URLPath.login}
+        element={
+          auth?.isAuthenticated ? (
+            <Navigate to={URLPath.DASHBOARD} />
+          ) : (
+            <SignIn />
+          )
+        }
+      />
+      <Route
+        path={URLPath.register}
+        element={
+          auth?.isAuthenticated ? (
+            <Navigate to={URLPath.DASHBOARD} />
+          ) : (
+            <Signup />
+          )
+        }
+      />
+
+      <Route
+        path={URLPath.DASHBOARD}
+        element={
+          auth && auth.isAuthenticated ? (
+            <Dashboard />
+          ) : (
+            <Navigate to={URLPath.login} />
+          )
+        }
+      />
+
       <Route path="*" element={<h1>404</h1>} />
     </Routes>
   );

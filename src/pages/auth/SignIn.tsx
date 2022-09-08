@@ -27,8 +27,9 @@ export default function Signin() {
         values.email,
         values.password
       );
-      if (res) {
+      if (res && res?.accessToken) {
         dispatch(authActions.setLogin(true));
+        localStorage.setItem("email", values.email);
         localStorage.setItem("authToken", res?.accessToken);
         navigate(URLPath.DASHBOARD);
       }

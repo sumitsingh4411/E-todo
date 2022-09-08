@@ -28,7 +28,7 @@
   outline: none;
   border-radius: 4px;
   width: 100%;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 .create_todo_modal_title {
   font-size: 24px;
@@ -50,4 +50,9 @@
   width: 20px;
   height: 20px;
   border: 1px solid #ccc;
+}
+.error {
+  color: rgb(165, 20, 20);
+  font-size: 14px;
+  font-weight: 400;
 }

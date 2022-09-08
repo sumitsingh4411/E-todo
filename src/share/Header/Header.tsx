@@ -1,22 +1,25 @@
 import React from "react";
 import "./Header.scss";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { URLPath } from "../constant";
-import { useSelector } from "react-redux";
-import { selectAuth } from "../redux/slice/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions, selectAuth } from "../redux/slice/authSlice";
 import { logout } from "../firebaseConfig";
 
 export default function Header() {
   const history = useNavigate();
+  const dispatch = useDispatch();
   const auth = useSelector(selectAuth);
   const goToHomePage = () => {
     history("/");
   };
   const logOutUser = () => {
+    dispatch(authActions.setLogout(false));
     logout();
     localStorage.removeItem("authToken");
-    history("/");
+    <Navigate to={URLPath.home} />;
   };
+
   return (
     <div className="custom_header">
       <div className="custom_header_left">

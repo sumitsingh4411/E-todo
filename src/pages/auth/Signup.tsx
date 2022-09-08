@@ -32,8 +32,9 @@ export default function Signup() {
         values.email,
         values.password
       );
-      if (data) {
+      if (data && data?.accessToken) {
         dispatch(authActions.setLogin(true));
+        localStorage.setItem("email", values.email);
         localStorage.setItem("authToken", data?.accessToken);
         navigate(URLPath.DASHBOARD);
       }

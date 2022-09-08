@@ -56,7 +56,7 @@ const signInWithGoogle = async () => {
 const logInWithEmailAndPassword = async (email: any, password: any) => {
   try {
     const res = await signInWithEmailAndPassword(auth, email, password);
-    return res;
+    return res.user;
   } catch (err: any) {
     if (err?.message === "Firebase: Error (auth/user-not-found).")
       toast.error("Invalid Credentials");

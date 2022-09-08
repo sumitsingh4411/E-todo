@@ -28,7 +28,8 @@ html {
 body {
   font-weight: normal;
   font-style: normal;
-  height: 100%;
+  height: auto;
+  min-height: 100vh;
   color: var(--regular-text-color);
   font-size: 1.6rem;
   line-height: 2.4rem;
