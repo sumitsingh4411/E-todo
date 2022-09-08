@@ -1,5 +1,5 @@
 //@ts-nocheck
-import React from "react";
+import React, { useEffect } from "react";
 import { todoActions } from "../../redux/slice/todoSlice";
 import CustomModal from "./CustomModal";
 import * as yup from "yup";
@@ -13,14 +13,22 @@ export default function EditToDoModal({
   title,
   remindAt,
   id,
-  checked,
+  completed,
 }: any) {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    formik.setFieldValue("title", title);
+    formik.setFieldValue("remindAt", remindAt);
+    formik.setFieldValue("checked", completed);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [completed]);
+
   const formik = useFormik({
     initialValues: {
       title: title,
       remindAt: remindAt,
-      checked: checked,
+      checked: completed,
     },
     validationSchema: yup.object({
       title: yup.string().required("Title is required"),

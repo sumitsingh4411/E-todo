@@ -4,7 +4,7 @@ import jwt_decode from "jwt-decode";
 let authToken = localStorage.getItem("authToken");
 
 let decoded: any = authToken && jwt_decode(authToken || "");
-localStorage.setItem("email", decoded?.email);
+if (decoded && decoded?.email) localStorage.setItem("email", decoded?.email);
 const initialState = {
   isAuthenticated: decoded && decoded?.email ? true : false,
   email: decoded && decoded?.email ? decoded?.email : "",

@@ -19,13 +19,16 @@ export default function CreateToDoModal({ isOpen, setIsOpen }: any) {
     onSubmit: (values) => {
       const data: any = localStorage.getItem(TODO_KEY);
       let todoList = JSON.parse(data);
-      todoList.push({
-        id: todoList.length + 1,
-        title: values.title,
-        remindAt: values.remindAt ? values.remindAt : new Date().toISOString(),
-        completed: false,
-        createdAt: new Date().toLocaleString(),
-      });
+      todoList = [
+        {
+          id: Math.random().toString(36).substr(2, 9),
+          title: values.title,
+          completed: false,
+          createdAt: new Date().toISOString(),
+          remindAt: values.remindAt,
+        },
+        ...todoList,
+      ];
       dispatch(todoActions.setTodoList(todoList));
       localStorage.setItem(TODO_KEY, JSON.stringify(todoList));
       formik.resetForm();

@@ -104,7 +104,7 @@ export default function ToDoList({
         title={title}
         remindAt={remindAt}
         id={id}
-        checked={completed}
+        completed={completed}
       />
     </div>
   );

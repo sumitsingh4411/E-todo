@@ -12,7 +12,6 @@ const getDemoTodoList = createAsyncThunk("todo/getDemoTodoList", async () => {
     } else {
       const res = await axios.get(API_URL_TODO);
       let data: any = res?.data.slice(0, 10);
-
       for (let i = 0; i < data?.length; i++) {
         data[i].createdAt = new Date().toISOString();
         data[i].remindAt = new Date().toISOString();
